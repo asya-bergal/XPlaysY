@@ -10,40 +10,10 @@
   var messagesRef = new Firebase('https://x-plays-y.firebaseio.com/msg');
    
   // Write relevant message to firebase
-  function left()
-  {
-    messagesRef.push({name:"anon", text:"left", time: Firebase.ServerValue.TIMESTAMP});
+  function sendMsg(msg) {
+    messagesRef.push({name:"anon", text:msg, time: Firebase.ServerValue.TIMESTAMP}); 
   }
-  function right()
-  {
-    messagesRef.push({name:"anon", text:"right", time: Firebase.ServerValue.TIMESTAMP});
-  }
-  function up()
-  {
-    messagesRef.push({name:"anon", text:"up", time: Firebase.ServerValue.TIMESTAMP});
-  }
-  function down()
-  {
-    messagesRef.push({name:"anon", text:"down", time: Firebase.ServerValue.TIMESTAMP});
-  }
-
-  function a()
-  {
-    messagesRef.push({name:"anon", text:"a", time: Firebase.ServerValue.TIMESTAMP});
-  }
-  function b()
-  {
-    messagesRef.push({name:"anon", text:"b", time: Firebase.ServerValue.TIMESTAMP});
-  }
-
-  function start()
-  {
-    messagesRef.push({name:"anon", text:"start", time: Firebase.ServerValue.TIMESTAMP});
-  }
-  function select()
-  {
-    messagesRef.push({name:"anon", text:"select", time: Firebase.ServerValue.TIMESTAMP});
-  }  
+  
   // $('#messageInput').keypress(function (e) {
   //   if (e.keyCode == 13) {
    //  var name = $('#nameInput').val();
@@ -65,35 +35,35 @@
   <div class="container_10">
     <div class="grid_1 tall_2"></div>
     <div class="grid_1 tall_2">
-      <input type ="image" class="full" src = "img/up.png" onclick = "up()"></input>    
+      <input type ="image" class="full" src = "img/up.png" onclick = "sendMsg('up')"></input>    
     </div>
     <div class="clear"></div>
     <div class="grid_2 tall_1">
-      <input type = "image" class="full" src = "img/left.png" onclick = "left()"></input>  
+      <input type = "image" class="full" src = "img/left.png" onclick = "sendMsg('left')"></input>  
     </div>
     <div class="grid_1 tall_1"></div>
     <div class="grid_2 tall_1">
-      <input type ="image" class="full" src = "img/right.png" onclick = "right()"></input>    
+      <input type ="image" class="full" src = "img/right.png" onclick = "sendMsg('right')"></input>    
     </div>
     <div class="grid_1 tall_1"></div>
     <div class="grid_2 tall_1">
-      <input type ="image" class="full" src = "img/b.png" onclick = "b()"></input>
+      <input type ="image" class="full" src = "img/b.png" onclick = "sendMsg('b')"></input>
     </div>
     <div class="grid_2 tall_1">
-      <input type ="image" class="full" src = "img/a.png" onclick = "a()"></input>
+      <input type ="image" class="full" src = "img/a.png" onclick = "sendMsg('a')"></input>
     </div>
     <div class="clear"></div>
     <div class="grid_2 tall_2"></div>
     <div class="grid_1 tall_2">
-      <input type ="image" class="full" src = "img/down.png" onclick = "down()"></input>
+      <input type ="image" class="full" src = "img/down.png" onclick = "sendMsg('down')"></input>
     </div>
     <div class="clear"></div>
     <div class="grid_3 tall_1"></div>
     <div class="grid_2 tall_1">
-      <input type ="image" class="full" src = "img/start.png" onclick = "start()"></input>
+      <input type ="image" class="full" src = "img/start.png" onclick = "sendMsg('start')"></input>
     </div>
     <div class="grid_2 tall_1">
-      <input type ="image" class="full" src = "img/select.png" onclick = "select()"></input>
+      <input type ="image" class="full" src = "img/select.png" onclick = "sendMsg('select')"></input>
     </div>
     <div class="clear"></div>
   </div>
