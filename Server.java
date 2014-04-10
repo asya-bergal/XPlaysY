@@ -1,11 +1,11 @@
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
+
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import com.firebase.client.*;
 
@@ -47,7 +47,12 @@ public class Server {
 				msg = msg.trim();
 				
 				if(keyMap.containsKey(msg)){ //if the input is a valid key press, add it to the queue
-					GameThread.keyQueue.add(keyMap.get(msg));
+					try {
+                        GameThread.keyQueue.put(keyMap.get(msg));
+                    } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
 				}
 			}
 
@@ -62,7 +67,7 @@ public class Server {
 
 class GameThread extends Thread //goes through the queue, pressing the keys
 {
-	public static ArrayList<Integer> keyQueue = new ArrayList<Integer>(); //queue of key presses
+	public static BlockingQueue<Integer> keyQueue = new LinkedBlockingQueue<Integer>(); //queue of key presses
 	
 	public void run()
 	{
@@ -70,18 +75,24 @@ class GameThread extends Thread //goes through the queue, pressing the keys
 		try {
 			robot = new Robot(); //make new key-pressing robot
 		} 
-		catch (AWTException e1) {}	
+		catch (AWTException e1) { e1.printStackTrace();}	
 		
 		while (true) //keep processing key presses out of the queue
 		{	
-			try{
-				Thread.sleep(10);
-			}catch (InterruptedException e) {}
+//			try{
+//				Thread.sleep(10);
+//			}catch (InterruptedException e) { e.printStackTrace(); }
 			
 			if (keyQueue.size() == 0) //do nothing if there's nothing in the queue
 				continue;
 		
-			int keyEvent = keyQueue.remove(0); //get the first key event out of the queue		
+			int keyEvent = 0;
+            try {
+                keyEvent = keyQueue.take(); //get the first key event out of the queue
+            } catch (InterruptedException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }	
 
 			robot.keyPress(keyEvent); //press corresponding key
 			System.out.println("key pressed");
