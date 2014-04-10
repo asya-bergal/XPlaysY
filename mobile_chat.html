@@ -1,0 +1,117 @@
+<html>
+<head>
+  <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+  <link rel="stylesheet" type = "text/css" href="style.css">
+</head>
+<script>
+  // Get a reference to the root of the chat data.
+  var usersRef = new Firebase('https://x-plays-y.firebaseio.com/userlist');
+  var messagesRef = new Firebase('https://x-plays-y.firebaseio.com/msg');
+   
+  // Write relevant message to firebase
+  function left()
+  {
+    messagesRef.push({name:"anon", text:"left", time: Firebase.ServerValue.TIMESTAMP});
+  }
+  function right()
+  {
+    messagesRef.push({name:"anon", text:"right", time: Firebase.ServerValue.TIMESTAMP});
+  }
+  function up()
+  {
+    messagesRef.push({name:"anon", text:"up", time: Firebase.ServerValue.TIMESTAMP});
+  }
+  function down()
+  {
+    messagesRef.push({name:"anon", text:"down", time: Firebase.ServerValue.TIMESTAMP});
+  }
+
+  function a()
+  {
+    messagesRef.push({name:"anon", text:"a", time: Firebase.ServerValue.TIMESTAMP});
+  }
+  function b()
+  {
+    messagesRef.push({name:"anon", text:"b", time: Firebase.ServerValue.TIMESTAMP});
+  }
+
+  function start()
+  {
+    messagesRef.push({name:"anon", text:"start", time: Firebase.ServerValue.TIMESTAMP});
+  }
+  function select()
+  {
+    messagesRef.push({name:"anon", text:"select", time: Firebase.ServerValue.TIMESTAMP});
+  }  
+  // $('#messageInput').keypress(function (e) {
+  //   if (e.keyCode == 13) {
+   //  var name = $('#nameInput').val();
+  //     var text = $('#messageInput').val();
+  //     messagesRef.push({name:name, text:text, time: Firebase.ServerValue.TIMESTAMP});
+  //     $('#messageInput').val('');
+  //   }
+  // });
+
+  // // Add a callback that is triggered for each chat message.
+  // messagesRef.limit(40).on('child_added', function (snapshot) {
+  //   var message = snapshot.val();
+  //   $('<div/>').text(message.text).prepend($('<em/>')
+  //     .text(message.name+': ')).appendTo($('#messagesDiv'));
+  //   $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
+  // });
+</script>
+<body>
+  <div class="container_10">
+    <div class="grid_1 tall_2"></div>
+    <div class="grid_1 tall_2">
+      <input type ="image" class="full" src = "up.png" onclick = "up()"></input>    
+    </div>
+    <div class="clear"></div>
+    <div class="grid_2 tall_1">
+      <input type = "image" class="full" src = "left.png" onclick = "left()"></input>  
+    </div>
+    <div class="grid_1 tall_1"></div>
+    <div class="grid_2 tall_1">
+      <input type ="image" class="full" src = "right.png" onclick = "right()"></input>    
+    </div>
+    <div class="grid_1 tall_1"></div>
+    <div class="grid_2 tall_1">
+      <input type ="image" class="full" src = "b.png" onclick = "b()"></input>
+    </div>
+    <div class="grid_2 tall_1">
+      <input type ="image" class="full" src = "a.png" onclick = "a()"></input>
+    </div>
+    <div class="clear"></div>
+    <div class="grid_2 tall_2"></div>
+    <div class="grid_1 tall_2">
+      <input type ="image" class="full" src = "down.png" onclick = "down()"></input>
+    </div>
+    <div class="clear"></div>
+    <div class="grid_3 tall_1"></div>
+    <div class="grid_2 tall_1">
+      <input type ="image" class="full" src = "start.png" onclick = "start()"></input>
+    </div>
+    <div class="grid_2 tall_1">
+      <input type ="image" class="full" src = "select.png" onclick = "select()"></input>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <!-- 
+  <div class="fullHeight" style="width:50%; float:left;">
+    <div class="fullHeight" style="width:40%; float:left;">
+      <input type = "image" class="fullWidth" style="display:table-cell; vertical-align:middle;" src = "left.png" onclick = "left()"></input>
+    </div>
+    <input type ="image" src = "right.png" onclick = "right()"></input>
+    <input type ="image" src = "up.png" onclick = "up()"></input>
+    <input type ="image" src = "down.png" onclick = "down()"></input>
+    <input type ="image" src = "start.png" onclick = "start()"></input>
+  </div>
+  <div style="height:100%; width:50%; float:left;">
+    <input type ="image" src = "b.png" onclick = "b()"></input>
+    <input type ="image" src = "a.png" onclick = "a()"></input>
+    <input type ="image" src = "select.png" onclick = "select()"></input>
+  </div>
+</body>
+</html> -->

@@ -13,8 +13,8 @@
 <input style="display:none" type='text' id='messageInput' placeholder='Message...'>
 <script>
   // Get a reference to the root of the chat data.
-  var usersRef = new Firebase('https://amber-fire-9230.firebaseio.com/userlist');
-  var messagesRef = new Firebase('https://amber-fire-9230.firebaseio.com/msg');
+  var usersRef = new Firebase('https://x-plays-y.firebaseio.com/userlist');
+  var messagesRef = new Firebase('https://x-plays-y.firebaseio.com/msg');
   
   usersRef.once('value', function(userlist) {
     $('#usernum').html(userlist.numChildren() + " users online");
