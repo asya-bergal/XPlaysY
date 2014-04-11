@@ -95,7 +95,7 @@ class GameThread extends Thread //goes through the queue, pressing the keys
             }	
 
 			robot.keyPress(keyEvent); //press corresponding key
-			System.out.println("key pressed");
+			//System.out.println("key pressed");
 			
 			try {
 				Thread.sleep(Math.max(1,100 - keyQueue.size())); //wait less between key presses if the size of the queue is larger

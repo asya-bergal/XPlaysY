@@ -15,22 +15,6 @@
     messagesRef.push({name:"anon", text:msg, time: Firebase.ServerValue.TIMESTAMP}); 
   }
   
-  // $('#messageInput').keypress(function (e) {
-  //   if (e.keyCode == 13) {
-   //  var name = $('#nameInput').val();
-  //     var text = $('#messageInput').val();
-  //     messagesRef.push({name:name, text:text, time: Firebase.ServerValue.TIMESTAMP});
-  //     $('#messageInput').val('');
-  //   }
-  // });
-
-  // // Add a callback that is triggered for each chat message.
-  // messagesRef.limit(40).on('child_added', function (snapshot) {
-  //   var message = snapshot.val();
-  //   $('<div/>').text(message.text).prepend($('<em/>')
-  //     .text(message.name+': ')).appendTo($('#messagesDiv'));
-  //   $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
-  // });
 </script>
 <body>
   <div class="container_10">
@@ -68,21 +52,5 @@
     </div>
     <div class="clear"></div>
   </div>
-
-  <!-- 
-  <div class="fullHeight" style="width:50%; float:left;">
-    <div class="fullHeight" style="width:40%; float:left;">
-      <input type = "image" class="fullWidth" style="display:table-cell; vertical-align:middle;" src = "left.png" onclick = "left()"></input>
-    </div>
-    <input type ="image" src = "right.png" onclick = "right()"></input>
-    <input type ="image" src = "up.png" onclick = "up()"></input>
-    <input type ="image" src = "down.png" onclick = "down()"></input>
-    <input type ="image" src = "start.png" onclick = "start()"></input>
-  </div>
-  <div style="height:100%; width:50%; float:left;">
-    <input type ="image" src = "b.png" onclick = "b()"></input>
-    <input type ="image" src = "a.png" onclick = "a()"></input>
-    <input type ="image" src = "select.png" onclick = "select()"></input>
-  </div>
 </body>
-</html> -->
+</html>
