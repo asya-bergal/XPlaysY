@@ -10,7 +10,10 @@ import java.util.concurrent.LinkedBlockingQueue;
 import com.firebase.client.*;
 
 public class Server {
-	
+
+	final static int minGuaranteedQueueSize = 20; //min queue size where each action is guaranteed to make it to the queue
+	final static int maxQueueSize = 60; //max queue size you can ever have
+
 	public static void main(String args[])
 	{
 		final long startTime = System.currentTimeMillis(); //start time of current session
@@ -47,12 +50,15 @@ public class Server {
 				msg = msg.trim();
 				
 				if(keyMap.containsKey(msg)){ //if the input is a valid key press, add it to the queue
-					try {
-                        GameThread.keyQueue.put(keyMap.get(msg));
-                    } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
+					if(Math.random() < computeActionProbability()) //randomly add or do not add action the queue depending on probability
+					{
+						try {
+	                        GameThread.keyQueue.put(keyMap.get(msg)); //add action to queue
+	                    } catch (InterruptedException e) {
+	                        // TODO Auto-generated catch block
+	                        e.printStackTrace();
+	                    }
+					}
 				}
 			}
 
@@ -63,6 +69,13 @@ public class Server {
 
 		});		
 	}
+	
+	public static double computeActionProbability() //computes the probability of an action going through as a function of the current queue size
+	{
+		double prob = -1.0/(maxQueueSize - minGuaranteedQueueSize)*GameThread.keyQueue.size() + (double)(maxQueueSize)/(maxQueueSize - minGuaranteedQueueSize);
+		return prob;
+	}
+
 }
 
 class GameThread extends Thread //goes through the queue, pressing the keys
